@@ -1,7 +1,7 @@
 #include "function_s.h"
 
 void add_info(string path, string* array) {
-    int size;
+    
 
     fstream inFile;
     inFile.open(path, ios::app);
@@ -11,14 +11,16 @@ void add_info(string path, string* array) {
     }
     else {
         cout << "Adding data to input file.\n" << endl;
-        cout << "Enter number of rows: ";
-        cin >> size;
-        std::cin.ignore();
-
         cout << "Enter info to add: " << endl;
-        for (int i = 0; i < size; i++) {
-            std::getline(cin, array[i]);
-            inFile << array[i] << endl;
+        int c = 0;
+        string type;
+        while (type != "N") {
+            type = "";
+            std::getline(cin, array[c]);
+            inFile << array[c] << endl;
+            c++;
+            cout << "Enter Y/N to continue: ";
+            getline(cin, type);
         }
     }
     inFile.close();
